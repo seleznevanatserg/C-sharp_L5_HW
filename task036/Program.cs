@@ -5,6 +5,9 @@ int [] userArray = SettingsAndGenerateArray();
 PrintArrayWhisIndex(userArray);
 Console.WriteLine($"{SumNumbersWithUnevenIndex (userArray)} - sum numbers with uneven index in array");
 
+
+
+// Метод генерации случайных элементов массива в пределах параметров.
 int[] GenerateArray(int min, int max, int length)
 {
     Random random = new Random();
@@ -17,7 +20,7 @@ int[] GenerateArray(int min, int max, int length)
 
     return array;
 }
-
+// Метод ввода значений юзером с поверкой введёного.
 int InputIntNumberTryParse()
 {
     Console.WriteLine("Enter number, please.");
@@ -34,7 +37,7 @@ int InputIntNumberTryParse()
         return num;
     }
 }
-
+// Метод для установления конфиг и генерации одномерного массива со случайными значениями.
 int[] SettingsAndGenerateArray()
 {
     Console.WriteLine("Welcom, user. It's module settings for one-dimensional array.");
@@ -42,11 +45,11 @@ int[] SettingsAndGenerateArray()
 
     Console.WriteLine("You must specify the number of array elements.");
     int length = InputIntNumberTryParse();
-    if (length == 0)
+    if (length == 0 || length == 1) // Не даёт создать юзеру массив с 0 или 1 элементом (т.к. диапазон).
     {
-        length = 1;
+        length = 2;
     }
-    if (length < 0)
+    if (length < 0)     // Изменяет на положительное, если юзер ввёл отрицательное значение длины массива.
     {
         length = length * -1;
     }
@@ -54,7 +57,7 @@ int[] SettingsAndGenerateArray()
     int min = InputIntNumberTryParse();
     Console.WriteLine("You must specify maximum value for generate array.");
     int max = InputIntNumberTryParse();
-    if (min > max)
+    if (min > max)  // Меняет местами мин. и макс. значения диапазона, если юзер ввёл не так границы диапазона (потому что генерирует с помощью Next).
     {
         int b = min;
         min = max;
@@ -64,7 +67,7 @@ int[] SettingsAndGenerateArray()
     int [] array = GenerateArray(min, max, length);
     return array;
 }
-
+// Метод подсчёта суммы значений массива, имеющих нечётый индекс.
 int SumNumbersWithUnevenIndex (int [] array)
 {
     int i = 0;
@@ -79,7 +82,7 @@ int SumNumbersWithUnevenIndex (int [] array)
     }
     return sum;
 }
-
+// Печать элементов массива с индексом элемента.
 void PrintArrayWhisIndex(int[] array)
 {
     for (var i = 0; i < array.Length; i++)

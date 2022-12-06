@@ -8,8 +8,7 @@ int result = CounterEvenNumbers(userArray);
 Console.WriteLine($"{result} it's amount even numbers in array (up).");
 
 
-
-
+// Метод для подсчёта количества чётных значений элементов в массиве.
 int CounterEvenNumbers(int [] array)
 {
     int count = 0;
@@ -24,7 +23,7 @@ int CounterEvenNumbers(int [] array)
     }
     return count;
 }
-
+// Печать элементов массива.
 void PrintArray(int[] array)
 {
     for (var i = 0; i < array.Length; i++)
@@ -33,7 +32,7 @@ void PrintArray(int[] array)
     }
     Console.WriteLine();
 }
-
+// Метод генерации случайных элементов массива в пределах параметров.
 int[] GenerateArray(int min, int max, int length)
 {
     Random random = new Random();
@@ -46,7 +45,7 @@ int[] GenerateArray(int min, int max, int length)
 
     return array;
 }
-
+// Метод ввода значений юзером с поверкой введёного.
 int InputIntNumberTryParse()
 {
     MSG();
@@ -64,7 +63,7 @@ int InputIntNumberTryParse()
         return num;
     }
 }
-
+// Сообщенька :)
 void MSG ()
 {
     Console.WriteLine("You must specify the number of array elements.");
