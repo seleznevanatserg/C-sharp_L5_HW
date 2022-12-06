@@ -1,9 +1,44 @@
-﻿// Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных индексах.
-//  [3, 7, 23, 12] -> 19    [-4, -6, 89, 6] -> 0
+﻿// Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
+// [3 7 22 2 78] -> 76
 
 int [] userArray = SettingsAndGenerateArray();
-PrintArrayWhisIndex(userArray);
-Console.WriteLine($"{SumNumbersWithUnevenIndex (userArray)} - sum numbers with uneven index in array");
+PrintArray(userArray);
+int result = DifferenceMaxToMinValueInArrau(userArray);
+Console.WriteLine($"{result} - difference between maximum and minimum array value.");
+
+int DifferenceMaxToMinValueInArrau (int [] array)
+{
+    int min = array[0];
+    int max = array[0];
+    
+    int result = 0;
+    for (int i = 1; i < array.Length; i++)
+    {
+        if (array[i] < min)
+        {
+            min = array[i];
+        }
+        else
+        {
+            if (array[i] > max)
+            {
+                max = array[i];
+            }
+        }
+    }
+    Console.WriteLine($"max = {max}; min = {min}");
+    result = max - min;
+    return result;
+}
+
+void PrintArray(int[] array)
+{
+    for (var i = 0; i < array.Length; i++)
+    {
+        Console.Write($"[{array[i]}] ");
+    }
+    Console.WriteLine();
+}
 
 int[] GenerateArray(int min, int max, int length)
 {
@@ -63,28 +98,4 @@ int[] SettingsAndGenerateArray()
 
     int [] array = GenerateArray(min, max, length);
     return array;
-}
-
-int SumNumbersWithUnevenIndex (int [] array)
-{
-    int i = 0;
-    int sum = 0;
-    while (i < array.Length)
-    {
-        if (i % 2 != 0)
-        {
-            sum = sum + array[i];
-        }
-        i++;
-    }
-    return sum;
-}
-
-void PrintArrayWhisIndex(int[] array)
-{
-    for (var i = 0; i < array.Length; i++)
-    {
-        Console.Write($"({array[i]})[{i}] ");
-    }
-    Console.WriteLine();
 }
